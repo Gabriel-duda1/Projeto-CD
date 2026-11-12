@@ -1,3 +1,5 @@
+# %%
+
 import pandas as pd
 import plotly.express as px
 
@@ -67,3 +69,33 @@ fig.update_layout(
 
     )
 fig.show()
+
+
+fig = px.bar(
+
+    x = total_mensal.index,
+    y = total_mensal.values,
+    title='Total de vendas por mes'
+)
+fig.update_layout (
+    
+     xaxis_title='mes',
+    yaxis_title='Unidades vendidas')
+
+fig.show()
+
+maiores_vendas = df.sort_values('vendas', ascending=False)
+maiores_vendas [('data', 'vendas')].head(10)
+
+data_pico = maiores_vendas['data'].iloc[0]
+print('Data de pico', data_pico)
+
+
+inicio= data_pico - pd.Timedelta(days=14)
+fim= data_pico + pd.Timedelta(days=14)
+
+recorte = df[df['data'] >= inicio]
+recorte = recorte[recorte['data'] <= fim]
+
+
+
