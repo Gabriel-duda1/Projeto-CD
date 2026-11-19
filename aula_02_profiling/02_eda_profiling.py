@@ -17,4 +17,5 @@ relatorio = ProfileReport(
 
 )
 
-relatorio.to_file("../Documentos")
+relatorio.to_file("../relatorio_vendas.html")
+# %%
